@@ -15,13 +15,18 @@ container.pack(fill="both", expand=True)
 
 #Frame 1: Login Menu
 login_menu = Frame(container)
-login_menu.place(relwidth=1, relheight=1)
+login_menu.grid(relwidth=1, relheight=1)
 
 title_label = Label(login_menu, text="NCEA Credit Tracker", font=("Arial", 21, "bold"))
-title_label.pack(pady=10)
+title_label.grid(row=0, column=0)
 
-username = Entry(login_menu, text="Username: ", font=("Arial", 13))
-username.pack()
+#Username part
+username_label = Label(root, text="username:")
+username_label.grid(row=1, column=0)
+
+username_entry = Entry(root)
+username_entry.grid(row=1, column=1)
+
 
 #Button rows
 button_frame = Frame(login_menu)
