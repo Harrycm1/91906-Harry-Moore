@@ -20,8 +20,8 @@ login_menu.place(relwidth=1, relheight=1)
 title_label = Label(login_menu, text="NCEA Credit Tracker", font=("Arial", 21, "bold"))
 title_label.pack(pady=10)
 
-username = Entry(login_menu, text="Username: ", font=("Arial", 21))
-username.grid(row=1, column=0)
+username = Entry(login_menu, text="Username: ", font=("Arial", 13))
+username.pack()
 
 #Button rows
 button_frame = Frame(login_menu)
