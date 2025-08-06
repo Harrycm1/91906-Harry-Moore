@@ -50,26 +50,40 @@ main_menu.place(relwidth=1, relheight=1)
 
 #ALL OF BELOW IS WINDOW 2
 
-#Main Title
+#Main menu frame
+main_menu = Frame(container)
+main_menu.place(relwidth=1, relheight=1)
+
+#Row and column centre thingy
+for i in range(5): 
+    main_menu.grid_columnconfigure(i, weight=1)
+for i in range(5): 
+    main_menu.grid_rowconfigure(i, weight=1)
+
+#Main Title 
 title_label = Label(main_menu, text="NCEA Credit Tracker", font=("Arial", 21, "bold"))
-title_label.grid(row=0, column=0, pady=20)
+title_label.grid(row=0, column=2, pady=20, sticky="n")
 
-NA_label = Label(main_menu, text="NA Credits")
-NA_label.grid(row=1, column=1, padx=20)
+#2x2 Frame for below
+grid_frame = Frame(main_menu)
+grid_frame.grid(row=1, column=1, columnspan=2, padx=20, pady=20)
 
-A_label = Label(main_menu, text="A Credits")
-A_label.grid(row=1, column=2)
+#2x2 gridding
+NA_label = Label(grid_frame, text="NA Credits")
+NA_label.grid(row=0, column=0, padx=10, pady=10)
 
-M_label = Label(main_menu, text="M Credits")
-M_label.grid(row=2, column=1, padx=20)
+A_label = Label(grid_frame, text="A Credits")
+A_label.grid(row=0, column=1, padx=10, pady=10)
 
-E_label = Label(main_menu, text="E Credits")
-E_label.grid(row=2, column=2)
+M_label = Label(grid_frame, text="M Credits")
+M_label.grid(row=1, column=0, padx=10, pady=10)
 
+E_label = Label(grid_frame, text="E Credits")
+E_label.grid(row=1, column=1, padx=10, pady=10)
 
-
+#Logout button
 back_button = Button(main_menu, text="Logout", borderwidth=2, relief="solid", font=style, command=lambda: show_frame(login_menu))
-back_button.grid()
+back_button.grid(row=3, column=2, pady=20, sticky="n")
 
 #show login menu first
 show_frame(login_menu)
