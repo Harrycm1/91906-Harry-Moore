@@ -52,24 +52,24 @@ main_menu.place(relwidth=1, relheight=1)
 
 #Main Title
 title_label = Label(main_menu, text="NCEA Credit Tracker", font=("Arial", 21, "bold"))
-title_label.grid(row=0, column=0)
+title_label.pack
 
 NA_label = Label(main_menu, text="NA Credits")
-NA_label.grid(row=1, column=0)
+NA_label.pack(side=LEFT, padx=10)
 
 A_label = Label(main_menu, text="A Credits")
-A_label.grid(row=2, column=0)
+A_label.pack(side=RIGHT, padx=10)
 
 M_label = Label(main_menu, text="M Credits")
-M_label.grid(row=3, column=0)
+M_label.pack(side=LEFT, padx= 10)
 
 E_label = Label(main_menu, text="E Credits")
-E_label.grid(row=4, column=0)
+E_label.pack(side=RIGHT, padx = 10)
 
 
 
 back_button = Button(main_menu, text="Logout", borderwidth=2, relief="solid", font=style, command=lambda: show_frame(login_menu))
-back_button.pack(pady=20)
+back_button.pack(padx=10)
 
 #show login menu first
 show_frame(login_menu)
