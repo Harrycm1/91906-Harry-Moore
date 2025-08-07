@@ -1,4 +1,7 @@
 #NCEA credit tracker by Harry Moore for AS91906
+#PLEASE READ!!!!!!!!!!
+#The username is :Harry
+#And password is :Moore
 
 from tkinter import *
 
@@ -21,6 +24,7 @@ container.pack(fill="both", expand=True)
 #ALL OF BELOW IS WINDOW 1
 
 #Login menu frame
+
 login_menu = Frame(container)
 login_menu.place(relwidth=1, relheight=1)
 
@@ -39,8 +43,18 @@ password_label.pack(pady=(10, 2))
 password_entry = Entry(login_menu, show="*")
 password_entry.pack(pady=(0, 10))
 
-#Enter Button
-Login = Button(login_menu, text="Enter", borderwidth=2, relief="solid", font=style, command=lambda: show_frame(main_menu))
+#Login function which checks users inputs above to make sure they enter the correct username and password
+def check_login():
+    username = username_entry.get()
+    password = password_entry.get()
+    if username == "Harry" and password == "Moore":
+        show_frame(main_menu)
+    else:
+        from tkinter import messagebox
+        messagebox.showerror("Login Failed", "Incorrect username or password.")
+
+#Logiin button
+Login = Button(login_menu, text="Enter", borderwidth=2, relief="solid", font=style, command=check_login)
 Login.pack(pady=20)
 
 #Main menu frame
@@ -64,7 +78,7 @@ for i in range(5):
 title_label = Label(main_menu, text="NCEA Credit Tracker", font=("Arial", 21, "bold"))
 title_label.grid(row=0, column=2, pady=20, sticky="n")
 
-#2x2 Frame for below
+#2x2 for frame
 grid_frame = Frame(main_menu)
 grid_frame.grid(row=1, column=1, columnspan=2, padx=20, pady=20)
 
