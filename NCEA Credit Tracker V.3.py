@@ -114,25 +114,25 @@ grid_frame.grid(row=4, column=1, columnspan=2, padx=20, pady=20)
 NA_label2 = Label(grid_frame, text="Enter NA Credits")
 NA_label2.grid(row=4, column=0, padx=5, pady=5)
 
-NA_entry = Entry(grid_frame)
+NA_entry = Entry(grid_frame, width=3)
 NA_entry.grid(row=5, column=0, padx=5, pady=5)
 
 A_label2 = Label(grid_frame, text="Enter A Credits")
 A_label2.grid(row=4, column=1, padx=5, pady=5)
 
-A_entry = Entry(grid_frame)
+A_entry = Entry(grid_frame, width=3)
 A_entry.grid(row=5, column=1, padx=5, pady=5)
 
 M_label2 = Label(grid_frame, text="Enter M Credits")
 M_label2.grid(row=6, column=0, padx=5, pady=5)
 
-M_entry = Entry(grid_frame)
+M_entry = Entry(grid_frame, width=3)
 M_entry.grid(row=7, column=0, padx=5, pady=5)
 
 E_label2 = Label(grid_frame, text="Enter E Credits")
 E_label2.grid(row=6, column=1, padx=5, pady=5)
 
-E_entry = Entry(grid_frame)
+E_entry = Entry(grid_frame, width=3)
 E_entry.grid(row=7, column=1, padx=5, pady=5)
 
 
