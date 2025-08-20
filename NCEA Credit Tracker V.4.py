@@ -7,7 +7,7 @@ from tkinter import *
 
 root = Tk()
 root.title("NCEA Credit Tracker By Harry Moore")
-root.geometry("500x400")
+root.geometry("500x500")
 root.resizable(0, 0)
 
 #Title font
@@ -80,9 +80,9 @@ title_label.grid(row=0, column=2, pady=20, sticky="n")
 
 #2x2 for frame
 grid_frame = Frame(main_menu)
-grid_frame.grid(row=1, column=1, columnspan=2, padx=20, pady=20)
+grid_frame.grid(row=1, column=1, columnspan=2, padx=5, pady=5)
 
-#2x2 gridding
+#Labels
 NA_label = Label(grid_frame, text="NA Credits", font=('Arial', 9, 'underline'))
 NA_label.grid(row=0, column=0, padx=10, pady=10)
 
@@ -108,8 +108,6 @@ E_amount = Label(grid_frame, text="0")
 E_amount.grid(row=3, column=1, padx=5, pady=5)
 
 #User entry for Labels above
-grid_frame = Frame(main_menu)
-grid_frame.grid(row=4, column=1, columnspan=2, padx=20, pady=20)
 
 NA_label2 = Label(grid_frame, text="Enter NA Credits")
 NA_label2.grid(row=4, column=0, padx=5, pady=5)
