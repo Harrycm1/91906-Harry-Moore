@@ -133,10 +133,20 @@ E_label2.grid(row=6, column=1, padx=5, pady=5)
 E_entry = Entry(grid_frame, width=3)
 E_entry.grid(row=7, column=1, padx=5, pady=5)
 
+def calc():
+    NA_entry.get()
+    A_entry.get()
+    M_entry.get()
+    E_entry.get()
+
+
+#Calculate button
+calc_button = Button(main_menu, text="Calculate", borderwidth=2, relief="solid", font=style)
+calc_button.grid(row=8, column=2, pady=10, sticky="n")
 
 #Logout button
 back_button = Button(main_menu, text="Logout", borderwidth=2, relief="solid", font=style, command=lambda: show_frame(login_menu))
-back_button.grid(row=8, column=2, pady=20, sticky="n")
+back_button.grid(row=9, column=2, pady=20, sticky="n")
 
 #show login menu first
 show_frame(login_menu)
