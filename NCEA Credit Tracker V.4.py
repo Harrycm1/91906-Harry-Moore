@@ -64,6 +64,7 @@ main_menu.place(relwidth=1, relheight=1)
 
 #ALL OF BELOW IS WINDOW 2
 
+
 #Main menu frame
 main_menu = Frame(container)
 main_menu.place(relwidth=1, relheight=1)
@@ -82,33 +83,33 @@ title_label.grid(row=0, column=2, pady=20, sticky="n")
 grid_frame = Frame(main_menu)
 grid_frame.grid(row=1, column=1, columnspan=2, padx=5, pady=5)
 
-#Labels
+#Labels at top
 NA_label = Label(grid_frame, text="NA Credits", font=('Arial', 9, 'underline'))
 NA_label.grid(row=0, column=0, padx=10, pady=10)
 
-NA_amount = Label(grid_frame, text="0")
+NA_amount = Label(grid_frame, text="")
 NA_amount.grid(row=1, column=0, padx=5, pady=5)
 
 A_label = Label(grid_frame, text="A Credits", font=('Arial', 9, 'underline'))
 A_label.grid(row=0, column=1, padx=10, pady=10)
 
-A_amount = Label(grid_frame, text="0")
+A_amount = Label(grid_frame, text="")
 A_amount.grid(row=1, column=1, padx=5, pady=5)
 
 M_label = Label(grid_frame, text="M Credits", font=('Arial', 9, 'underline'))
 M_label.grid(row=2, column=0, padx=10, pady=10)
 
-M_amount = Label(grid_frame, text="0")
+M_amount = Label(grid_frame, text="")
 M_amount.grid(row=3, column=0, padx=5, pady=5)
 
 E_label = Label(grid_frame, text="E Credits", font=('Arial', 9, 'underline'))
 E_label.grid(row=2, column=1, padx=10, pady=10)
 
-E_amount = Label(grid_frame, text="0")
+E_amount = Label(grid_frame, text="")
 E_amount.grid(row=3, column=1, padx=5, pady=5)
 
-#User entry for Labels above
 
+#User entry for Labels above
 NA_label2 = Label(grid_frame, text="Enter NA Credits")
 NA_label2.grid(row=4, column=0, padx=5, pady=5)
 
@@ -133,15 +134,19 @@ E_label2.grid(row=6, column=1, padx=5, pady=5)
 E_entry = Entry(grid_frame, width=3)
 E_entry.grid(row=7, column=1, padx=5, pady=5)
 
+#Calculate Button function
 def calc():
-    NA_entry.get()
-    A_entry.get()
-    M_entry.get()
-    E_entry.get()
-
+    showNA = NA_entry.get()
+    showA = A_entry.get()
+    showM = M_entry.get()
+    showE = E_entry.get()
+    NA_amount.config(text=f"{showNA}")
+    A_amount.config(text=f"{showA}")
+    M_amount.config(text=f"{showM}")
+    E_amount.config(text=f"{showE}")
 
 #Calculate button
-calc_button = Button(main_menu, text="Calculate", borderwidth=2, relief="solid", font=style)
+calc_button = Button(main_menu, text="Calculate", borderwidth=2, relief="solid", font=style, command=calc)
 calc_button.grid(row=8, column=2, pady=10, sticky="n")
 
 #Logout button
