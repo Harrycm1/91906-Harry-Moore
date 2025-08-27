@@ -2,7 +2,6 @@
 #PLEASE READ!!!!!!!!!!
 #The username is :Harry
 #And password is :Moore
-
 from tkinter import *
 import json  
 import os   
@@ -23,12 +22,13 @@ container.pack(fill="both", expand=True)
 #Json file function
 DATA_FILE = "credits.json"
 
+# Now, we store totals in the file, not just latest entry
 def save_data():
     data = {
-        "NA": NA_entry.get(),
-        "A": A_entry.get(),
-        "M": M_entry.get(),
-        "E": E_entry.get()
+        "NA_total": NA_total,
+        "A_total": A_total,
+        "M_total": M_total,
+        "E_total": E_total
     }
     with open(DATA_FILE, "w") as f:
         json.dump(data, f)
@@ -37,10 +37,9 @@ def load_data():
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, "r") as f:
             return json.load(f)
-    return {"NA": "", "A": "", "M": "", "E": ""}
+    return {"NA_total": 0, "A_total": 0, "M_total": 0, "E_total": 0}
 
 saved_data = load_data()
-
 
 #All OF BELOW IS WINDOW 1
 
@@ -77,6 +76,8 @@ def check_login():
 #Login Button
 Login = Button(login_menu, text="Login", borderwidth=2, relief="solid", font=style, command=check_login)
 Login.pack(pady=20)
+
+#All OF BELOW IS WINDOW 2
 
 #Main menyu frame
 main_menu = Frame(container)
@@ -124,37 +125,37 @@ NA_label2 = Label(grid_frame, text="Enter NA Credits")
 NA_label2.grid(row=4, column=0, padx=5, pady=5)
 NA_entry = Entry(grid_frame, width=3)
 NA_entry.grid(row=5, column=0, padx=5, pady=5)
-NA_entry.insert(0, saved_data["NA"]) 
+NA_entry.insert(0, "") 
 
 A_label2 = Label(grid_frame, text="Enter A Credits")
 A_label2.grid(row=4, column=1, padx=5, pady=5)
 A_entry = Entry(grid_frame, width=3)
 A_entry.grid(row=5, column=1, padx=5, pady=5)
-A_entry.insert(0, saved_data["A"]) 
+A_entry.insert(0, "") 
 
 M_label2 = Label(grid_frame, text="Enter M Credits")
 M_label2.grid(row=6, column=0, padx=5, pady=5)
 M_entry = Entry(grid_frame, width=3)
 M_entry.grid(row=7, column=0, padx=5, pady=5)
-M_entry.insert(0, saved_data["M"]) 
+M_entry.insert(0, "") 
 
 E_label2 = Label(grid_frame, text="Enter E Credits")
 E_label2.grid(row=6, column=1, padx=5, pady=5)
 E_entry = Entry(grid_frame, width=3)
 E_entry.grid(row=7, column=1, padx=5, pady=5)
-E_entry.insert(0, saved_data["E"]) 
+E_entry.insert(0, "") 
 
-# Show saved values
-NA_amount.config(text=saved_data["NA"])
-A_amount.config(text=saved_data["A"])
-M_amount.config(text=saved_data["M"])
-E_amount.config(text=saved_data["E"])
+#Begin at loaded values
+NA_total = saved_data.get("NA_total", 0)
+A_total = saved_data.get("A_total", 0)
+M_total = saved_data.get("M_total", 0)
+E_total = saved_data.get("E_total", 0)
 
-#Begin at 0
-NA_total = 0
-A_total = 0
-M_total = 0
-E_total = 0
+# Show saved totals
+NA_amount.config(text=str(NA_total))
+A_amount.config(text=str(A_total))
+M_amount.config(text=str(M_total))
+E_amount.config(text=str(E_total))
 
 #Calculation function
 def calc():
@@ -176,7 +177,6 @@ def calc():
         e = int(E_entry.get())
     except:
         e = 0
-    save_data() 
 
     #Adding totals
     NA_total += na
@@ -189,6 +189,8 @@ def calc():
     A_amount.config(text=f"{A_total}")
     M_amount.config(text=f"{M_total}")
     E_amount.config(text=f"{E_total}")
+
+    save_data() #Save to file!
 
     #Clear entries
     NA_entry.delete(0, END)
