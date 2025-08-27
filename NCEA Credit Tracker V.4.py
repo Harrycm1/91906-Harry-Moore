@@ -22,7 +22,7 @@ container.pack(fill="both", expand=True)
 #Json file function
 DATA_FILE = "credits.json"
 
-# Now, we store totals in the file, not just latest entry
+
 def save_data():
     data = {
         "NA_total": NA_total,
@@ -209,3 +209,4 @@ back_button.grid(row=9, column=2, pady=20, sticky="n")
 show_frame(login_menu)
 
 root.mainloop()
+
