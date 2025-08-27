@@ -22,7 +22,8 @@ container.pack(fill="both", expand=True)
 #Json file function
 DATA_FILE = "credits.json"
 
-# Now, we store totals in the file, not just latest entry
+#These two functions save the calculated totals into a Json and then once again load them back when the file is closed
+#Save Data
 def save_data():
     data = {
         "NA_total": NA_total,
@@ -33,6 +34,7 @@ def save_data():
     with open(DATA_FILE, "w") as f:
         json.dump(data, f)
 
+#Load Data
 def load_data():
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, "r") as f:
